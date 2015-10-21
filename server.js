@@ -22,6 +22,7 @@
 
     redisClient.pfadd("uniqVisitors", req.ip);
   });*/
+  });
 
   app.listen(8080, function() {
     console.log("port 8080");
