@@ -5,7 +5,7 @@
   var bodyParser = require("body-parser");
   var webSocket = require('ws');
   var redis = require("redis");
-  var redisClient = redis.createClient( process.env.PORT || 6379);
+  var redisClient = redis.createClient( process.env.REDIS_URL);
   var port = process.env.PORT || 8080;
   var app = express();
 
