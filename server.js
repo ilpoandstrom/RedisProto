@@ -3,9 +3,10 @@
 
   var express = require("express");
   var bodyParser = require("body-parser");
+  var webSocket = require('ws');
   //var redis = require("redis");
   //var redisClient = redis.createClient();
-
+  var port = process.env.PORT || 8080;
   var app = express();
 
   app.get('/', function(req, res) {
@@ -24,8 +25,9 @@
   });*/
   });
 
-  app.listen(8080, function() {
-    console.log("port 8080");
+  app.listen(port, function() {
+    console.log("port " + port);
+
   });
 
 })();

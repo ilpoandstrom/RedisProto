@@ -15,7 +15,8 @@
   "dependencies" : {
     "body-parser" : "",
     "express" : "",
-    "redis" : ""
+    "redis" : "",
+    "ws" : ""
   },
   "engines": {
     "node" : "v0.10.37"
