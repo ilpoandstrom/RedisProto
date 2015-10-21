@@ -2,7 +2,7 @@
   "name": "redisproto",
   "version": "1.0.0",
   "description": "simple redisproto with nodejs + angularjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +11,10 @@
     "url": "https://vyotiainen@bitbucket.org/vyotiainen/redisproto.git"
   },
   "author": "Ilppis",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies" : {
+    "body-parser" : "",
+    "express" : "",
+    "redis" : ""
+  }
 }
