@@ -4,14 +4,15 @@
   var express = require("express");
   var bodyParser = require("body-parser");
   var webSocket = require('ws');
-  //var redis = require("redis");
-  //var redisClient = redis.createClient();
+  var redis = require("redis");
+  var redisClient = redis.createClient( process.env.PORT || 6379);
   var port = process.env.PORT || 8080;
   var app = express();
 
   app.get('/', function(req, res) {
     res.sendFile( __dirname + "/public/index.html");
-    /*redisClient.lrange("users", 0, -1, function(err, reply) {
+    redisClient.lrange("users", 0, -1, function(err, reply) {
+      console.log(reply);
       if(err) {
         console.log(err);
       } else {
@@ -22,7 +23,6 @@
     });
 
     redisClient.pfadd("uniqVisitors", req.ip);
-  });*/
   });
 
   app.listen(port, function() {
