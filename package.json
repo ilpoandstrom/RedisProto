@@ -16,5 +16,8 @@
     "body-parser" : "",
     "express" : "",
     "redis" : ""
+  },
+  "engines": {
+    "node" : "v0.10.37"
   }
 }
