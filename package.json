@@ -17,7 +17,8 @@
     "body-parser" : "",
     "express" : "",
     "redis" : "",
-    "ws" : ""
+    "ws" : "",
+    "async": ""
   },
   "engines": {
     "node" : "v0.10.37"
