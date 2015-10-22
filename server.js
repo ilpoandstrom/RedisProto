@@ -81,9 +81,14 @@
         res.status(404).send("something went wrong");
       } else {
         var index = reply.indexOf(req.ip);
-        var key = "hourly:"+ dateHourString();
-        redisClient.setbit(key, index, 1);
-        res.status(200).send("push completed");
+        if(index >= 0) {
+          var key = "hourly:"+ dateHourString();
+          redisClient.setbit(key, index, 1);
+          res.status(200).send("push completed");
+        } else {
+          res.status(404).send(index.toString());
+        }
+
       }
     });
   });
