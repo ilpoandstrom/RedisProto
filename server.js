@@ -27,12 +27,12 @@
         console.log(err);
       } else {
         if(reply.indexOf(req.ip) === -1) {
-          redisClient.rpush("users", req.ip);
+
         }
       }
     });
 
-    redisClient.pfadd("uniqVisitors", req.ip);
+
     res.sendFile( __dirname + "/public/index.html");
   });
 
@@ -75,6 +75,8 @@
   });
 
   app.post('/push', function(req, res) {
+    redisClient.pfadd("uniqVisitors", req.ip);
+
     redisClient.lrange("users", 0, -1, function(err, reply) {
       console.log(reply);
       console.log(req.ip);
@@ -83,6 +85,9 @@
         res.status(404).send("something went wrong");
       } else {
         var index = reply.indexOf(req.ip);
+        if(index == -1) {
+          index = redisClient.rpush("users", req.ip) - 1;
+        }
         if(index >= 0) {
           var key = "hourly:"+ dateHourString();
           redisClient.setbit(key, index, 1);
