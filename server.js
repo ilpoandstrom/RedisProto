@@ -76,6 +76,7 @@
   app.post('/push', function(req, res) {
     redisClient.lrange("users", 0, -1, function(err, reply) {
       console.log(reply);
+      console.log(req.ip);
       if(err) {
         console.log(err);
         res.status(404).send("something went wrong");
