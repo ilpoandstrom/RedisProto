@@ -26,7 +26,7 @@
       if(err) {
         console.log(err);
       } else {
-        if(reply.indexOf(req.ip) === -1) {
+        if(reply.indexOf(req.ip) === -1 || reply === undefined) {
           redisClient.rpush("users", req.ip);
         }
       }
