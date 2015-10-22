@@ -20,19 +20,20 @@
   app.use(express.static(__dirname + '/public'));
 
   app.get('/', function(req, res) {
-    res.sendFile( __dirname + "/public/index.html");
+    console.log("here i am");
     redisClient.lrange("users", 0, -1, function(err, reply) {
-      console.log(reply);
+      console.log("first reply "+ reply);
       if(err) {
         console.log(err);
       } else {
-        if(reply.indexOf(req.ip) === -1 || reply === undefined) {
+        if(reply.indexOf(req.ip) === -1) {
           redisClient.rpush("users", req.ip);
         }
       }
     });
 
     redisClient.pfadd("uniqVisitors", req.ip);
+    res.sendFile( __dirname + "/public/index.html");
   });
 
   app.get('/data', function(req, res) {
