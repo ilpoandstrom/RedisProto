@@ -31,7 +31,7 @@
 
         $http.get("https://redisproto.herokuapp.com/allTimeUserCount").then(function(res){
           console.log(res);
-          $scope.allTimeUsers = res.data[0];
+          $scope.allTimeUsers = res.data;
         }, function(err) {
           console.log(err);
         });
